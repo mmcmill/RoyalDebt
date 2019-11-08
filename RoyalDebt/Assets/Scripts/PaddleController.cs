@@ -6,16 +6,23 @@ using UnityEngine.SceneManagement;
 public class PaddleController : MonoBehaviour
 {
     private float _movementSpeed = 0.5f;
-    private float _highestPoint = 0;
-    private float _score = 0;
-    public float Score { get => _score;
+    private float _stockPrice = 0;
+    public float StockPrice { get => _stockPrice;
         set
         {
-            _score = value;
+            _stockPrice = value;
             ScoreDisplay.UpdateScoreDisplay(this);
         }
     }
-    private int scoreInc;
+    private int _stockInc;
+    private int _funds = 0;
+    public int Funds { get => _funds;
+        set
+        {
+            _funds = value;
+            ScoreDisplay.UpdateFundsDisplay(this);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +32,10 @@ public class PaddleController : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.y > _highestPoint)
+        float posY = transform.position.y * 10;
+        if(posY > StockPrice)
         {
-            _highestPoint = transform.position.y;
-            Score += _highestPoint;
+            StockPrice = posY;
         }
     }
 
@@ -58,8 +65,8 @@ public class PaddleController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ball")
         {
-            this.Score += (Score/4);//STIMULUS
-            Debug.Log(Score);
+            this.Funds += (int)(StockPrice/4);//STIMULUS
+            Debug.Log(Funds);
         }
     }
 

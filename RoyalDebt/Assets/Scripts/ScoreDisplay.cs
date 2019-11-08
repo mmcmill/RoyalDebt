@@ -10,10 +10,6 @@ public class ScoreDisplay : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    void OnEnable()
-    {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -29,9 +25,27 @@ public class ScoreDisplay : MonoBehaviour
         foreach (Text t in can.GetComponentsInChildren<Text>())
         {
 
-            if (t.name == "ScoreNum")
+            if (t.name == "StockPrice")
             {
-                t.text = ((int)paddle.Score).ToString();
+                t.text = ((int)paddle.StockPrice).ToString();
+            }
+        }
+    }
+
+    public static void UpdateFundsDisplay(PaddleController paddle)
+    {
+        Canvas can = null;
+        foreach (Canvas c in FindObjectsOfType<Canvas>())
+        {
+            if (c.name == "UICanvas") can = c;
+        }
+
+        foreach (Text t in can.GetComponentsInChildren<Text>())
+        {
+
+            if (t.name == "FundsAmt")
+            {
+                t.text = ((int)paddle.Funds).ToString();
             }
         }
     }
@@ -40,11 +54,15 @@ public class ScoreDisplay : MonoBehaviour
     {
         if (scene.name == "MainScene" && needDestroy)
         {
+            Debug.Log("REsetting Score");
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(gameObject);
+            
         }
         if (scene.name == "GameOver")
         {
             needDestroy = true;
+            Debug.Log(this);
             Canvas can = null;
             foreach (Canvas c in FindObjectsOfType<Canvas>())
             {
@@ -53,9 +71,9 @@ public class ScoreDisplay : MonoBehaviour
 
             foreach (Text t in can.GetComponentsInChildren<Text>())
             {
-                if (t.name == "ScoreText")
+                if (t.name == "StockText")
                 {
-                    t.text = "Final Score:";
+                    t.text = "Final Stock Price:";
                 }
             }
         }
