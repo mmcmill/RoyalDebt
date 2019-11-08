@@ -66,7 +66,6 @@ public class PaddleController : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             this.Funds += (int)(StockPrice/4);//STIMULUS
-            Debug.Log(Funds);
         }
     }
 

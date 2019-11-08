@@ -54,7 +54,6 @@ public class ScoreDisplay : MonoBehaviour
     {
         if (scene.name == "MainScene" && needDestroy)
         {
-            Debug.Log("REsetting Score");
             SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(gameObject);
             
@@ -62,7 +61,6 @@ public class ScoreDisplay : MonoBehaviour
         if (scene.name == "GameOver")
         {
             needDestroy = true;
-            Debug.Log(this);
             Canvas can = null;
             foreach (Canvas c in FindObjectsOfType<Canvas>())
             {
