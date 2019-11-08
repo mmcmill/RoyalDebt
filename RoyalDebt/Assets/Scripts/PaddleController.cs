@@ -6,13 +6,30 @@ using UnityEngine.SceneManagement;
 public class PaddleController : MonoBehaviour
 {
     private float _movementSpeed = 0.5f;
-    public int score = 0;
-    public int scoreInc = 5;
+    private float _highestPoint = 0;
+    private float _score = 0;
+    public float Score { get => _score;
+        set
+        {
+            _score = value;
+            ScoreDisplay.UpdateScoreDisplay(this);
+        }
+    }
+    private int scoreInc;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
+    }
+
+    void Update()
+    {
+        if(transform.position.y > _highestPoint)
+        {
+            _highestPoint = transform.position.y;
+            Score += _highestPoint;
+        }
     }
 
     void FixedUpdate()
@@ -41,18 +58,18 @@ public class PaddleController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ball")
         {
-            this.score += scoreInc;
-            Debug.Log(score);
+            this.Score += (Score/4);//STIMULUS
+            Debug.Log(Score);
         }
     }
 
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if(scene.name == "MainScene")
-        {
-            Destroy(gameObject);
-            Debug.Log("Resetting Paddle");
-        }
-    }
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    if(scene.name == "MainScene")
+    //    {
+    //        Destroy(gameObject);
+    //        Debug.Log("Resetting Paddle");
+    //    }
+    //}
 }
