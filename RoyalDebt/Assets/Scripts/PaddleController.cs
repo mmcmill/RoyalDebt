@@ -50,6 +50,16 @@ public class PaddleController : MonoBehaviour
         {
             this.transform.Translate(Vector3.right * _movementSpeed);
         }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ShootFunds();
+        }
+    }
+
+    private void ShootFunds()
+    {
+        throw new System.NotImplementedException();
     }
 
     void OnCollisionStay2D(Collision2D collision)

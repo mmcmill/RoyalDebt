@@ -294,6 +294,7 @@ MonoBehaviour:
   tieSpeedToBall: 1
   xSpeed: 0.3
   ySpeed: 0.3
+  maxSpeed: {x: 0.5, y: 0.3}
   movementLimit: {x: 0, y: 0}
 --- !u!1001 &3066607125189633616
 PrefabInstance:
@@ -436,6 +437,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847206187063651391, guid: 1b57f328a3063754d85e9c755c58a753,
+        type: 3}
+      propertyPath: maxSpeed.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847206187063651391, guid: 1b57f328a3063754d85e9c755c58a753,
+        type: 3}
+      propertyPath: maxSpeed.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b57f328a3063754d85e9c755c58a753, type: 3}

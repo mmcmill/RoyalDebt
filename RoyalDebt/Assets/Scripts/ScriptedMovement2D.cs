@@ -7,6 +7,7 @@ public class ScriptedMovement2D : MonoBehaviour
     public bool tieSpeedToBall;
     public float xSpeed;
     public float ySpeed;
+    public Vector2 maxSpeed;
     /// <summary>
     /// X and Y values that define the range of movement that is allowed.
     /// if both are left as zero, this will go unused.
@@ -68,7 +69,14 @@ public class ScriptedMovement2D : MonoBehaviour
 
     private void SyncSpeedToBall()
     {
-        this.xSpeed = Mathf.Abs(ball.Speed.x);
-        this.ySpeed = Mathf.Abs(ball.Speed.y);
+        if (xSpeed < maxSpeed.x)
+        {
+            this.xSpeed = Mathf.Abs(ball.Speed.x);
+        }
+        if (ySpeed < maxSpeed.y)
+        {
+            Debug.Log(ySpeed);
+            this.ySpeed = Mathf.Abs(ball.Speed.y);
+        }
     }
 }

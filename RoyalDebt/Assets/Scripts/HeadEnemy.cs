@@ -6,6 +6,8 @@ public class HeadEnemy : MonoBehaviour
 {
     public float health;
     public float damageTaken;
+    public float moneyToBribe;
+
     // Start is called before the first frame update
     void Start()
     {
