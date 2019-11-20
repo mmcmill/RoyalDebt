@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PaddleController : MonoBehaviour
 {
-    private float _movementSpeed = 0.5f;
+    private float _movementSpeed = 0.7f;
     private float _stockPrice = 0;
     public float StockPrice { get => _stockPrice;
         set
@@ -76,6 +76,7 @@ public class PaddleController : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             this.Funds += (int)(StockPrice/4);//STIMULUS
+            GetComponent<AudioSource>().Play();
         }
     }
 

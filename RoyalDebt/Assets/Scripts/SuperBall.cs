@@ -58,13 +58,14 @@ public class SuperBall : MonoBehaviour
             speed.y *= -1;
         }
 
-        
+        GetComponent<AudioSource>().Play();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag.Equals("Finish"))
         {
+            new WaitForSeconds(2);
             SceneManager.LoadScene("GameOver");
         }
     }

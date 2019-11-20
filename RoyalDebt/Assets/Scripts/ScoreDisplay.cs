@@ -27,7 +27,7 @@ public class ScoreDisplay : MonoBehaviour
 
             if (t.name == "StockPrice")
             {
-                t.text = ((int)paddle.StockPrice).ToString();
+                t.text = "£ " +((int)paddle.StockPrice).ToString();
             }
         }
     }
@@ -45,7 +45,7 @@ public class ScoreDisplay : MonoBehaviour
 
             if (t.name == "FundsAmt")
             {
-                t.text = ((int)paddle.Funds).ToString();
+                t.text = "£ " + ((int)paddle.Funds).ToString();
             }
         }
     }
@@ -74,6 +74,10 @@ public class ScoreDisplay : MonoBehaviour
                     t.text = "Final Stock Price:";
                 }
             }
+
+            AudioClip gameOver = Resources.Load<AudioClip>("Sound/Game Over Theme");
+            Debug.Log(gameOver);
+            AudioSource.PlayClipAtPoint(gameOver, Vector3.zero, 1.0f);
         }
     }
 }

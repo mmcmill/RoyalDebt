@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class HeadEnemy : MonoBehaviour
 {
+    // health pool
     public float health;
+    // how much health is taken per ball hit
     public float damageTaken;
+    //how much money it takes to bribe head enemy.
     public float moneyToBribe;
+    // how much damage to do to public opinion of player
+    public float damageToPubOpin;
+    // How often to inflict damage to public opinion of player
+    public float deltaTDamage;
 
     // Start is called before the first frame update
     void Start()
