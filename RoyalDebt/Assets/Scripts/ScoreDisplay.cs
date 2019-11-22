@@ -79,5 +79,10 @@ public class ScoreDisplay : MonoBehaviour
             Debug.Log(gameOver);
             AudioSource.PlayClipAtPoint(gameOver, Vector3.zero, 1.0f);
         }
+        else
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Destroy(gameObject);
+        }
     }
 }
