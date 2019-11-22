@@ -11,9 +11,11 @@ public class HeadEnemy : MonoBehaviour
     //how much money it takes to bribe head enemy.
     public float moneyToBribe;
     // how much damage to do to public opinion of player
-    public float damageToPubOpin;
+    public int damageToPubOpin;
     // How often to inflict damage to public opinion of player
     public float deltaTDamage;
+
+    private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,14 @@ public class HeadEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if(timer > deltaTDamage)
+        {
+            var pc = GameObject.FindObjectOfType<PaddleController>();
+            pc.PublicOpinion -= damageToPubOpin;
+            timer -= deltaTDamage;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

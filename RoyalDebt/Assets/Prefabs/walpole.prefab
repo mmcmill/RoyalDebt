@@ -146,6 +146,8 @@ MonoBehaviour:
   health: 100
   damageTaken: 25
   moneyToBribe: 200
+  damageToPubOpin: 10
+  deltaTDamage: 2
 --- !u!114 &4185265397556394997
 MonoBehaviour:
   m_ObjectHideFlags: 0

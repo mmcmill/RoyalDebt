@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PaddleController : MonoBehaviour
 {
     private float _movementSpeed = 0.7f;
-    private float _stockPrice = 0;
+    private float _stockPrice;
     public float StockPrice { get => _stockPrice;
         set
         {
@@ -15,18 +15,48 @@ public class PaddleController : MonoBehaviour
         }
     }
     private int _stockInc;
-    private int _funds = 0;
+    private int _funds;
     public int Funds { get => _funds;
         set
         {
             _funds = value;
             ScoreDisplay.UpdateFundsDisplay(this);
+            if (_funds <= 0)
+            {
+                new WaitForSeconds(2);
+                SceneManager.LoadScene("GameOver");
+            }
+        }
+    }
+
+    public HealthBar pubOpinionBar;
+    private readonly static int PUBLIC_OPINION_MAX = 100;
+    private readonly static int PUBLIC_OPINION_MIN = 0;
+    private int _publicOpinion;
+    public int PublicOpinion { get => _publicOpinion;
+        set
+        {
+            _publicOpinion = value;
+            Debug.Log(_publicOpinion);
+            if (pubOpinionBar != null)
+            {
+                pubOpinionBar.UpdateBar(_publicOpinion, PUBLIC_OPINION_MAX);
+            }
+            if(_publicOpinion <= PUBLIC_OPINION_MIN)
+            {
+                _publicOpinion = PUBLIC_OPINION_MIN;
+                new WaitForSeconds(2);
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        StockPrice = 0;
+        Funds = 1000;
+        PublicOpinion = PUBLIC_OPINION_MAX;
        // DontDestroyOnLoad(gameObject);
     }
 
