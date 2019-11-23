@@ -50,17 +50,6 @@ public class ScoreDisplay : MonoBehaviour
         }
     }
 
-    public static void UpdatePubOpinDisplay(PaddleController paddle)
-    {
-        Canvas can = null;
-        foreach (Canvas c in FindObjectsOfType<Canvas>())
-        {
-            if (c.name == "UICanvas") can = c;
-        }
-
-        //TODO implement public opinion UI display. Should be a bar of health
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MainScene" && needDestroy)

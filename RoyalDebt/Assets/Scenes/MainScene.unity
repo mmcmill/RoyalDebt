@@ -1140,5 +1140,25 @@ PrefabInstance:
       propertyPath: fireRate
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 432102119443115650, guid: 1e7673c25e29b2047964349090fe9e7e,
+        type: 3}
+      propertyPath: fundsPerProjectile
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 432102119724694530, guid: 1e7673c25e29b2047964349090fe9e7e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992834112536316336, guid: 1e7673c25e29b2047964349090fe9e7e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992834112536316336, guid: 1e7673c25e29b2047964349090fe9e7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7673c25e29b2047964349090fe9e7e, type: 3}

@@ -23,7 +23,6 @@ public class PaddleController : MonoBehaviour
             ScoreDisplay.UpdateFundsDisplay(this);
             if (_funds <= 0)
             {
-                new WaitForSeconds(2);
                 SceneManager.LoadScene("GameOver");
             }
         }
@@ -43,10 +42,10 @@ public class PaddleController : MonoBehaviour
             {
                 pubOpinionBar.UpdateBar(_publicOpinion, PUBLIC_OPINION_MAX);
             }
+            if (_publicOpinion > PUBLIC_OPINION_MAX) _publicOpinion = PUBLIC_OPINION_MAX;
             if(_publicOpinion <= PUBLIC_OPINION_MIN)
             {
                 _publicOpinion = PUBLIC_OPINION_MIN;
-                new WaitForSeconds(2);
                 SceneManager.LoadScene("GameOver");
             }
         }

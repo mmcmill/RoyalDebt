@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  speed: {x: 0, y: 0.2}
+  speed: {x: 0, y: 0.4}
   maxRange: 20
   damage: 50
 --- !u!50 &7792123173449321928
