@@ -121,6 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c586099124e0302419457ac25e4da4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fundsPerProjectile: 50
+  pubOpinionBar: {fileID: 0}
+  projectile: {fileID: 0}
+  fireRate: 0.2
 --- !u!50 &3418764797582608595
 Rigidbody2D:
   serializedVersion: 4

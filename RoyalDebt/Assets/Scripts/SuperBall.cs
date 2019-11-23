@@ -46,6 +46,9 @@ public class SuperBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // ignore projectiles
+        if (collision.gameObject.tag == "Projectile") return;
+
         //Get the first contact point's normal
         Vector2 normal = collision.contacts[0].normal;
         

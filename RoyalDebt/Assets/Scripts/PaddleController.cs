@@ -28,6 +28,7 @@ public class PaddleController : MonoBehaviour
             }
         }
     }
+    public int fundsPerProjectile;
 
     public HealthBar pubOpinionBar;
     private readonly static int PUBLIC_OPINION_MAX = 100;
@@ -51,6 +52,11 @@ public class PaddleController : MonoBehaviour
         }
     }
 
+    public Projectile projectile;
+
+    private float timer = 0.0f;
+    public float fireRate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,10 +68,18 @@ public class PaddleController : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
+
         float posY = transform.position.y * 10;
         if(posY > StockPrice)
         {
             StockPrice = posY;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && timer > fireRate && projectile != null)
+        {
+            ShootFunds();
+            timer = 0f;
         }
     }
 
@@ -80,21 +94,18 @@ public class PaddleController : MonoBehaviour
         {
             this.transform.Translate(Vector3.right * _movementSpeed);
         }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            ShootFunds();
-        }
     }
 
     private void ShootFunds()
     {
-        throw new System.NotImplementedException();
+        Funds -= fundsPerProjectile;
+        Projectile p = Instantiate<Projectile>(projectile, transform.position, transform.rotation ,GetComponentInParent<Camera>().transform);
+        p.owner = gameObject;
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ball") return;
+        if (collision.gameObject.tag == "Ball" || collision.gameObject.tag == "Projectile") return;
 
         // otherwise we prevent the paddle from moving in that direction
         Vector2 normal = collision.GetContact(0).normal;

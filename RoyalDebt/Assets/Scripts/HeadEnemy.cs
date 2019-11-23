@@ -43,9 +43,21 @@ public class HeadEnemy : MonoBehaviour
             this.health -= damageTaken;
             if(this.health < 0)
             {
+                Debug.Log("DEATH BY BALL");
                 Destroy(gameObject);
             }
-        } else
+        } if(collision.gameObject.tag == "Projectile") {
+            Projectile hitBy = collision.gameObject.GetComponent<Projectile>();
+
+            moneyToBribe -= hitBy.damage;
+            if (this.moneyToBribe < 0)
+            {
+                Debug.Log("DEATH BY MONEY, give the owner back 10 percent of their health");
+                hitBy.owner.GetComponent<PaddleController>().PublicOpinion += 10;
+                Destroy(gameObject);
+            }
+        }
+        else
         {
             //Get the first contact point's normal
             Vector2 normal = collision.contacts[0].normal;

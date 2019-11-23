@@ -1129,5 +1129,16 @@ PrefabInstance:
       propertyPath: pubOpinionBar
       value: 
       objectReference: {fileID: 492138311}
+    - target: {fileID: 432102119443115650, guid: 1e7673c25e29b2047964349090fe9e7e,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7792123173449321926, guid: c9841d59a7dc9624a9440fac6fdece1c,
+        type: 3}
+    - target: {fileID: 432102119443115650, guid: 1e7673c25e29b2047964349090fe9e7e,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7673c25e29b2047964349090fe9e7e, type: 3}
