@@ -15,6 +15,13 @@ public class HeadEnemy : MonoBehaviour
     // How often to inflict damage to public opinion of player
     public float deltaTDamage;
 
+    [TextArea]
+    public List<string> attackDialogueOptions;
+    [TextArea]
+    public List<string> deathDialogueOptions;
+    [TextArea]
+    public List<string> bribeDialogueOptions;
+
     private float timer = 0.0f;
 
     // Start is called before the first frame update
@@ -31,9 +38,17 @@ public class HeadEnemy : MonoBehaviour
         if(timer > deltaTDamage)
         {
             var pc = GameObject.FindObjectOfType<PaddleController>();
+            string dialogue = attackDialogueOptions[Random.Range(0, attackDialogueOptions.Count)];
+            DisplayDialogue(dialogue);
             pc.PublicOpinion -= damageToPubOpin;
             timer -= deltaTDamage;
         }
+    }
+
+    private void DisplayDialogue(string dialogue)
+    {
+        Debug.Log(dialogue);
+        //TODO dialogue system
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -43,7 +58,8 @@ public class HeadEnemy : MonoBehaviour
             this.health -= damageTaken;
             if(this.health < 0)
             {
-                Debug.Log("DEATH BY BALL");
+                string dialogue = deathDialogueOptions[Random.Range(0, deathDialogueOptions.Count)];
+                DisplayDialogue(dialogue);
                 Destroy(gameObject);
             }
         } if(collision.gameObject.tag == "Projectile") {
@@ -52,7 +68,8 @@ public class HeadEnemy : MonoBehaviour
             moneyToBribe -= hitBy.damage;
             if (this.moneyToBribe < 0)
             {
-                Debug.Log("DEATH BY MONEY, give the owner back 10 percent of their health");
+                string dialogue = bribeDialogueOptions[Random.Range(0, bribeDialogueOptions.Count)];
+                DisplayDialogue(dialogue);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += 10;
                 Destroy(gameObject);
             }
