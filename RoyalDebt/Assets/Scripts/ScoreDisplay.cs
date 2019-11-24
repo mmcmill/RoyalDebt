@@ -74,10 +74,6 @@ public class ScoreDisplay : MonoBehaviour
                     t.text = "Final Stock Price:";
                 }
             }
-
-            AudioClip gameOver = Resources.Load<AudioClip>("Sound/Game Over Theme");
-            Debug.Log(gameOver);
-            AudioSource.PlayClipAtPoint(gameOver, Vector3.zero, 1.0f);
         }
         else
         {

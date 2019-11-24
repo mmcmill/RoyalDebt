@@ -22,6 +22,12 @@ public class HeadEnemy : MonoBehaviour
     [TextArea]
     public List<string> bribeDialogueOptions;
 
+
+    public AudioClip ballHit;
+    public AudioClip bribeHit;
+    public AudioClip ballDeath;
+    public AudioClip bribeDeath;
+
     private float timer = 0.0f;
 
     // Start is called before the first frame update
@@ -55,19 +61,26 @@ public class HeadEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.clip = ballHit;
+            audioSource.Play();
             this.health -= damageTaken;
             if(this.health < 0)
             {
+                AudioSource.PlayClipAtPoint(ballDeath, transform.position);
                 string dialogue = deathDialogueOptions[Random.Range(0, deathDialogueOptions.Count)];
                 DisplayDialogue(dialogue);
                 Destroy(gameObject);
             }
         } if(collision.gameObject.tag == "Projectile") {
             Projectile hitBy = collision.gameObject.GetComponent<Projectile>();
-
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.clip = bribeHit;
+           
             moneyToBribe -= hitBy.damage;
             if (this.moneyToBribe < 0)
             {
+                AudioSource.PlayClipAtPoint(bribeDeath, transform.position);
                 string dialogue = bribeDialogueOptions[Random.Range(0, bribeDialogueOptions.Count)];
                 DisplayDialogue(dialogue);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += 10;

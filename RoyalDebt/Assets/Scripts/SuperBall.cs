@@ -61,6 +61,8 @@ public class SuperBall : MonoBehaviour
             speed.y *= -1;
         }
 
+        // filter players
+        if (collision.gameObject.tag == "Player") return;
         GetComponent<AudioSource>().Play();
     }
 
