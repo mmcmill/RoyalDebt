@@ -33,7 +33,7 @@ public class HeadEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class HeadEnemy : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer > deltaTDamage)
+        if (timer > deltaTDamage && health > 0 && moneyToBribe > 0)
         {
             var pc = GameObject.FindObjectOfType<PaddleController>();
             string dialogue = attackDialogueOptions[Random.Range(0, attackDialogueOptions.Count)];
@@ -62,30 +62,35 @@ public class HeadEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.clip = ballHit;
-            audioSource.Play();
+
             this.health -= damageTaken;
-            if(this.health < 0)
+            if (this.health < 0)
             {
-                AudioSource.PlayClipAtPoint(ballDeath, transform.position);
+                AudioSource.PlayClipAtPoint(ballDeath, transform.parent.position, .2f);
+
                 string dialogue = deathDialogueOptions[Random.Range(0, deathDialogueOptions.Count)];
                 DisplayDialogue(dialogue);
                 Destroy(gameObject);
             }
-        } if(collision.gameObject.tag == "Projectile") {
+
+            audioSource.PlayOneShot(ballHit);
+        }
+        if (collision.gameObject.tag == "Projectile")
+        {
             Projectile hitBy = collision.gameObject.GetComponent<Projectile>();
             AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.clip = bribeHit;
-           
+            audioSource.PlayOneShot(bribeHit);
             moneyToBribe -= hitBy.damage;
             if (this.moneyToBribe < 0)
             {
-                AudioSource.PlayClipAtPoint(bribeDeath, transform.position);
+                AudioSource.PlayClipAtPoint(bribeDeath, transform.parent.position, .2f);
                 string dialogue = bribeDialogueOptions[Random.Range(0, bribeDialogueOptions.Count)];
                 DisplayDialogue(dialogue);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += 10;
                 Destroy(gameObject);
             }
+
+            
         }
         else
         {
