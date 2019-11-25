@@ -15,24 +15,18 @@ public class HeadEnemy : MonoBehaviour
     // How often to inflict damage to public opinion of player
     public float deltaTDamage;
 
-    [TextArea]
-    public List<string> attackDialogueOptions;
-    [TextArea]
-    public List<string> deathDialogueOptions;
-    [TextArea]
-    public List<string> bribeDialogueOptions;
-
-
     public AudioClip ballHit;
     public AudioClip bribeHit;
     public AudioClip ballDeath;
     public AudioClip bribeDeath;
 
     private float timer = 0.0f;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
 
     }
 
@@ -44,17 +38,9 @@ public class HeadEnemy : MonoBehaviour
         if (timer > deltaTDamage && health > 0 && moneyToBribe > 0)
         {
             var pc = GameObject.FindObjectOfType<PaddleController>();
-            string dialogue = attackDialogueOptions[Random.Range(0, attackDialogueOptions.Count)];
-            DisplayDialogue(dialogue);
             pc.PublicOpinion -= damageToPubOpin;
             timer -= deltaTDamage;
         }
-    }
-
-    private void DisplayDialogue(string dialogue)
-    {
-        Debug.Log(dialogue);
-        //TODO dialogue system
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -66,10 +52,8 @@ public class HeadEnemy : MonoBehaviour
             this.health -= damageTaken;
             if (this.health < 0)
             {
+                if(animator != null) animator.SetBool("IsLegalDeath", true);
                 AudioSource.PlayClipAtPoint(ballDeath, transform.parent.position, .2f);
-
-                string dialogue = deathDialogueOptions[Random.Range(0, deathDialogueOptions.Count)];
-                DisplayDialogue(dialogue);
                 Destroy(gameObject);
             }
 
@@ -83,14 +67,11 @@ public class HeadEnemy : MonoBehaviour
             moneyToBribe -= hitBy.damage;
             if (this.moneyToBribe < 0)
             {
+                if(animator!=null) animator.SetBool("IsBribeDeath", true);
                 AudioSource.PlayClipAtPoint(bribeDeath, transform.parent.position, .2f);
-                string dialogue = bribeDialogueOptions[Random.Range(0, bribeDialogueOptions.Count)];
-                DisplayDialogue(dialogue);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += 10;
                 Destroy(gameObject);
             }
-
-            
         }
         else
         {

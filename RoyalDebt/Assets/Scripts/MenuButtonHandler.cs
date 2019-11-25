@@ -27,6 +27,11 @@ public class MenuButtonHandler : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+    public void Controls()
+    {
+        SceneManager.LoadScene("Controls");
+    }
+
     public void NarrativeOverview()
     {
         SceneManager.LoadScene("NarrativeOverview");

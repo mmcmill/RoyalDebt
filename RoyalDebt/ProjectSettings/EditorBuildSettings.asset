@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NarrativeOverview.unity
     guid: 96876d8b23ade4e488d6e08465199110
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: 20103b9854c92b847a44067851cb754b
   m_configObjects: {}
