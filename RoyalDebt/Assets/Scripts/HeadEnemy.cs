@@ -29,7 +29,6 @@ public class HeadEnemy : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -52,11 +51,13 @@ public class HeadEnemy : MonoBehaviour
             AudioSource audioSource = GetComponent<AudioSource>();
             if (animator != null) animator.SetTrigger("IsLegalHit");
             this.health -= damageTaken;
-            if (this.health < 0)
+            if (this.health <= 0)
             {
                 if(animator != null) animator.SetBool("IsLegalDeath", true);
                 AudioSource.PlayClipAtPoint(ballDeath, transform.parent.position, .2f);
-                Destroy(gameObject);
+                if (animator == null) Destroy(gameObject); // we need to destroy the game object, instead of the death animation
+                // else we destroy this
+                Destroy(this);
             }
 
             audioSource.PlayOneShot(ballHit);
@@ -68,12 +69,13 @@ public class HeadEnemy : MonoBehaviour
             AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(bribeHit);
             moneyToBribe -= hitBy.damage;
-            if (this.moneyToBribe < 0)
+            if (this.moneyToBribe <= 0)
             {
                 if(animator!=null) animator.SetBool("IsBribeDeath", true);
                 AudioSource.PlayClipAtPoint(bribeDeath, transform.parent.position, .2f);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += pubOpinBack;
-                Destroy(gameObject);
+                if (animator == null) Destroy(gameObject); // we need to destroy the game object, instead of the death animation
+                Destroy(this);
             }
         }
         else

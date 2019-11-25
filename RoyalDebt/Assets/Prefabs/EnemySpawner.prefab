@@ -53,6 +53,6 @@ MonoBehaviour:
     y: 0
     width: 30
     height: 5
-  waveSpawnDelta: 5
-  maxPerWave: 2
+  waveSpawnDelta: 4
+  maxPerWave: 3
   minPerWave: 1
