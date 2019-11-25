@@ -15,6 +15,8 @@ public class HeadEnemy : MonoBehaviour
     // How often to inflict damage to public opinion of player
     public float deltaTDamage;
 
+    public int pubOpinBack;
+
     public AudioClip ballHit;
     public AudioClip bribeHit;
     public AudioClip ballDeath;
@@ -48,7 +50,7 @@ public class HeadEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             AudioSource audioSource = GetComponent<AudioSource>();
-
+            if (animator != null) animator.SetTrigger("IsLegalHit");
             this.health -= damageTaken;
             if (this.health < 0)
             {
@@ -62,6 +64,7 @@ public class HeadEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             Projectile hitBy = collision.gameObject.GetComponent<Projectile>();
+            if (animator != null) animator.SetTrigger("IsBribeHit");
             AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(bribeHit);
             moneyToBribe -= hitBy.damage;
@@ -69,7 +72,7 @@ public class HeadEnemy : MonoBehaviour
             {
                 if(animator!=null) animator.SetBool("IsBribeDeath", true);
                 AudioSource.PlayClipAtPoint(bribeDeath, transform.parent.position, .2f);
-                hitBy.owner.GetComponent<PaddleController>().PublicOpinion += 10;
+                hitBy.owner.GetComponent<PaddleController>().PublicOpinion += pubOpinBack;
                 Destroy(gameObject);
             }
         }
