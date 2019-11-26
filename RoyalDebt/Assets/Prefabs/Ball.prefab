@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38af800f8c0e71a41bdae646b365b088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: {x: 0.3, y: 0.3}
+  minSpeed: {x: 0.2, y: 0.2}
   maxSpeed: {x: 0.5, y: 0.5}
   scaleSpeedPerSecond: {x: 1.01, y: 1.01}
 --- !u!120 &3847206187063651361
@@ -180,7 +180,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -228,7 +228,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1

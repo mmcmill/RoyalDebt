@@ -92,10 +92,6 @@ public class ScoreDisplay : MonoBehaviour
                     {
                         t.text += "failing public opinion.";
                     }
-                    else if (ScoreDisplay.funds <= 0)
-                    {
-                        t.text += "the lack of personal funds to bribe with.";
-                    }
                     else
                     {
                         t.text += "failure to hype up the stock price.";

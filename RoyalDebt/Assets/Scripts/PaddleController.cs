@@ -23,7 +23,7 @@ public class PaddleController : MonoBehaviour
             ScoreDisplay.UpdateFundsDisplay(this);
             if (_funds <= 0)
             {
-                SceneManager.LoadScene("GameOver");
+                _funds = 0;
             }
         }
     }
@@ -97,7 +97,15 @@ public class PaddleController : MonoBehaviour
 
     private void ShootFunds()
     {
+        // cannot shoot if no ammo
+        if(Funds < fundsPerProjectile)
+        {
+            return;
+        }
+
+        //else we shoor
         Funds -= fundsPerProjectile;
+        
         Projectile p = Instantiate<Projectile>(projectile, transform.position, transform.rotation ,GetComponentInParent<Camera>().transform);
         p.owner = gameObject;
     }
@@ -115,7 +123,7 @@ public class PaddleController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ball")
         {
-            this.Funds += 300;//STIMULUS
+            this.Funds += 500;//STIMULUS
             GetComponent<AudioSource>().Play();
         }
     }
