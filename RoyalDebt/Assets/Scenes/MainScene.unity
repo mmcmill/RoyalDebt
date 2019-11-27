@@ -783,8 +783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -375, y: -27}
-  m_SizeDelta: {x: -950, y: 30}
+  m_AnchoredPosition: {x: -345, y: -30}
+  m_SizeDelta: {x: -910, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1326030361
 MonoBehaviour:
@@ -928,8 +928,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -375, y: -80}
-  m_SizeDelta: {x: -950, y: 30}
+  m_AnchoredPosition: {x: -345, y: -80}
+  m_SizeDelta: {x: -910, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732402936
 MonoBehaviour:
@@ -1041,7 +1041,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Stock Price:'
 --- !u!222 &2027563566

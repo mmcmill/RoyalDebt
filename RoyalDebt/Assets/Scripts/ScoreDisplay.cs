@@ -79,7 +79,7 @@ public class ScoreDisplay : MonoBehaviour
             {
                 if (t.name == "StockText")
                 {
-                    t.text = "Final Stock Price:";
+                    t.text = "Stock Price:";
                 }
             }
 
