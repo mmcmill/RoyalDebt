@@ -15,7 +15,7 @@ public class PaddleController : MonoBehaviour
         }
     }
     private int _stockInc;
-    private int _funds;
+    private int _funds= 1000;
     public int Funds { get => _funds;
         set
         {
@@ -32,21 +32,24 @@ public class PaddleController : MonoBehaviour
     public HealthBar pubOpinionBar;
     private readonly static int PUBLIC_OPINION_MAX = 100;
     private readonly static int PUBLIC_OPINION_MIN = 0;
-    private int _publicOpinion;
+    private int _publicOpinion = PUBLIC_OPINION_MAX;
     public int PublicOpinion { get => _publicOpinion;
         set
         {
-            _publicOpinion = value;
-            Debug.Log(_publicOpinion);
-            if (pubOpinionBar != null)
-            {
-                pubOpinionBar.UpdateBar(_publicOpinion, PUBLIC_OPINION_MAX);
-            }
-            if (_publicOpinion > PUBLIC_OPINION_MAX) _publicOpinion = PUBLIC_OPINION_MAX;
-            if(_publicOpinion <= PUBLIC_OPINION_MIN)
+            if (_publicOpinion <= PUBLIC_OPINION_MIN)
             {
                 _publicOpinion = PUBLIC_OPINION_MIN;
                 SceneManager.LoadScene("GameOver");
+            }
+            else
+            {
+                _publicOpinion = value;
+                Debug.Log(_publicOpinion);
+                if (pubOpinionBar != null)
+                {
+                    pubOpinionBar.UpdateBar(_publicOpinion, PUBLIC_OPINION_MAX);
+                }
+                if (_publicOpinion > PUBLIC_OPINION_MAX) _publicOpinion = PUBLIC_OPINION_MAX;
             }
         }
     }
@@ -59,9 +62,6 @@ public class PaddleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StockPrice = 0;
-        Funds = 1000;
-        PublicOpinion = PUBLIC_OPINION_MAX;
        // DontDestroyOnLoad(gameObject);
     }
 
