@@ -6,15 +6,37 @@ using UnityEngine.SceneManagement;
 public class SuperBall : MonoBehaviour
 {
     public Vector2 minSpeed;
-    private Vector2 speed;
+    private Vector2 speed; 
+    public Vector2 Speed => speed;
     public Vector2 maxSpeed;
-    
+    public Vector2 scaleSpeedPerSecond;
+    private float timer = 0.0f;
+    private float waitTime = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        speed = new Vector2(Random.value*maxSpeed.x, maxSpeed.y);
+        
+        speed = new Vector2(Random.Range(0.1f, 1.0f) *minSpeed.x, minSpeed.y);
         Debug.Log(speed);
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if(timer > waitTime)
+        {
+            if (Mathf.Abs(speed.x) < Mathf.Abs(maxSpeed.x))
+            {
+                speed.x *= scaleSpeedPerSecond.x;
+            }
+            if (Mathf.Abs(speed.y) < Mathf.Abs(maxSpeed.y))
+            {
+                speed.y *= scaleSpeedPerSecond.y;
+            }
+            timer -= waitTime;
+        }
     }
 
     void FixedUpdate()
@@ -24,6 +46,9 @@ public class SuperBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // ignore projectiles
+        if (collision.gameObject.tag == "Projectile") return;
+
         //Get the first contact point's normal
         Vector2 normal = collision.contacts[0].normal;
         
@@ -36,13 +61,16 @@ public class SuperBall : MonoBehaviour
             speed.y *= -1;
         }
 
-        
+        // filter players
+        if (collision.gameObject.tag == "Player") return;
+        GetComponent<AudioSource>().Play();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag.Equals("Finish"))
         {
+            new WaitForSeconds(2);
             SceneManager.LoadScene("GameOver");
         }
     }
