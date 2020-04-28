@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PaddleController : MonoBehaviour
@@ -59,12 +57,6 @@ public class PaddleController : MonoBehaviour
     private float timer = 0.0f;
     public float fireRate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       // DontDestroyOnLoad(gameObject);
-    }
-
     void Update()
     {
         timer += Time.deltaTime;
@@ -97,17 +89,14 @@ public class PaddleController : MonoBehaviour
 
     private void ShootFunds()
     {
-        // cannot shoot if no ammo
-        if(Funds < fundsPerProjectile)
+        // can only shoot if enough funds are available
+        if (Funds >= fundsPerProjectile)
         {
-            return;
-        }
+            Funds -= fundsPerProjectile;
 
-        //else we shoor
-        Funds -= fundsPerProjectile;
-        
-        Projectile p = Instantiate<Projectile>(projectile, transform.position, transform.rotation ,GetComponentInParent<Camera>().transform);
-        p.owner = gameObject;
+            Projectile p = Instantiate<Projectile>(projectile, transform.position, transform.rotation, GetComponentInParent<Camera>().transform);
+            p.owner = gameObject;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -127,14 +116,4 @@ public class PaddleController : MonoBehaviour
             GetComponent<AudioSource>().Play();
         }
     }
-
-
-    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    if(scene.name == "MainScene")
-    //    {
-    //        Destroy(gameObject);
-    //        Debug.Log("Resetting Paddle");
-    //    }
-    //}
 }
