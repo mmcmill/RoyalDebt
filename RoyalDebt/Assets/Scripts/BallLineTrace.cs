@@ -3,7 +3,7 @@
 public class BallLineTrace : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    private bool drawSwitch; //just used so we aren't drawing updating point every frame.
+    private bool drawSwitch; //just used so we aren't updating point every frame.
 
     // Start is called before the first frame update
     void Start()

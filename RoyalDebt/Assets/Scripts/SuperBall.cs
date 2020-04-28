@@ -16,7 +16,6 @@ public class SuperBall : MonoBehaviour
     {
         
         speed = new Vector2(Random.Range(0.1f, 1.0f) *minSpeed.x, minSpeed.y);
-        Debug.Log(speed);
     }
 
     void Update()

@@ -42,7 +42,6 @@ public class PaddleController : MonoBehaviour
             else
             {
                 _publicOpinion = value;
-                Debug.Log(_publicOpinion);
                 if (pubOpinionBar != null)
                 {
                     pubOpinionBar.UpdateBar(_publicOpinion, PUBLIC_OPINION_MAX);
