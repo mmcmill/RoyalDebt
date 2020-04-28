@@ -415,8 +415,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 1440, y: 500}
+  m_AnchoredPosition: {x: 0, y: 87.5}
+  m_SizeDelta: {x: 1440, y: 525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435860720
 MonoBehaviour:
@@ -440,7 +440,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f947deda7237fae4582120a079d59630, type: 3}
-    m_FontSize: 24
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -451,22 +451,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
-  m_Text: 'Use the South Sea Company''s ledger to keep the stock price from crashing
-    and bribe any detractors who are harming the public opinion of the company!
-
-
-    You may also deal with detractors by hitting them with the stock price, because
-    money is power and the government needs the company''s money.
-
-
-    Successful bribes will reward you with restoring public opinion. Money talks.
-
-
-    Beware: The stock price will become more volatile over time! Such levels of corruption
-    are unstable.
-
-
-    Two ways to lose: Drop the stock price or public opinion hits zero.'
+  m_Text: "Use the South Sea Company's ledger to keep the stock price from crashing
+    by bouncing it back up.\n\nCertain unhappy people will attempt to bring the public
+    opinion of the company down.\n\nYou may do two things: Bribe them or using your
+    company's power to imprison them.\n\nYou can shoot your personal funds to bribe
+    any detractors. When you run out of funds, you can no longer shoot until you get
+    more. Successful bribes will reward you with restoring public opinion. \n\nYou
+    can imprison your detractors by hitting them with the stock price, because money
+    is power and the government needs the company's money.\n\nBeware: The stock price
+    will become more volatile over time! Such levels of corruption are unstable. The
+    bubble will pop at some point.\n\nTwo ways to fail: Drop the stock price or public
+    opinion hits zero."
 --- !u!222 &1435860721
 CanvasRenderer:
   m_ObjectHideFlags: 0
