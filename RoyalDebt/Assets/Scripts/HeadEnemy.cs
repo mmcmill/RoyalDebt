@@ -51,6 +51,8 @@ public class HeadEnemy : MonoBehaviour
             AudioSource audioSource = GetComponent<AudioSource>();
             if (animator != null) animator.SetTrigger("IsLegalHit");
             this.health -= damageTaken;
+            audioSource.PlayOneShot(ballHit);
+
             if (this.health <= 0)
             {
                 if(animator != null) animator.SetBool("IsLegalDeath", true);
@@ -60,7 +62,6 @@ public class HeadEnemy : MonoBehaviour
                 Destroy(this);
             }
 
-            audioSource.PlayOneShot(ballHit);
         }
         if (collision.gameObject.tag == "Projectile")
         {

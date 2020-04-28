@@ -75,7 +75,6 @@ public class ScriptedMovement2D : MonoBehaviour
         }
         if (ySpeed < maxSpeed.y)
         {
-            Debug.Log(ySpeed);
             this.ySpeed = Mathf.Abs(ball.Speed.y);
         }
     }
