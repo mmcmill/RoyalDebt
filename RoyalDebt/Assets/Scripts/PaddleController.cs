@@ -112,7 +112,6 @@ public class PaddleController : MonoBehaviour
         if(collision.gameObject.tag == "Ball")
         {
             this.Funds += 500;//STIMULUS
-            GetComponent<AudioSource>().Play();
         }
     }
 }
