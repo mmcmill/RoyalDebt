@@ -7,4 +7,4 @@ A Breakout style video game that serves as a metaphor for the South Sea Company 
 
 You can read more about the South Sea Company Bubble [here](https://en.wikipedia.org/wiki/South_Sea_Company).
 
-_Play the game [here](https://mmcmill.github.io/RoyalDebt/index.html)._
+### **[Play the game here](https://mmcmill.github.io/RoyalDebt/index.html).**
