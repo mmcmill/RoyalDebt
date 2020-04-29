@@ -6,3 +6,5 @@ A Breakout style video game that serves as a metaphor for the South Sea Company 
   In the game, you are operating as John Blunt, one of the South Sea Company’s principal directors. The object of the game is to try and keep the share value of South Sea Company stock from crashing, and seeing how high you can drive the value in the process. 
 
 You can read more about the South Sea Company Bubble [here](https://en.wikipedia.org/wiki/South_Sea_Company).
+
+### **[Play the game here](https://mmcmill.github.io/RoyalDebt/index.html).**
