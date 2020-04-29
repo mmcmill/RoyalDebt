@@ -11,10 +11,15 @@ public class SuperBall : MonoBehaviour
     private float timer = 0.0f;
     private float waitTime = 1.0f;
 
+    private AudioSource audioSource;
+
+    public AudioClip onPaddleHit;
+    public AudioClip onElseHit;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
         speed = new Vector2(Random.Range(0.1f, 1.0f) *minSpeed.x, minSpeed.y);
     }
 
@@ -59,8 +64,8 @@ public class SuperBall : MonoBehaviour
         }
 
         // filter players
-        if (collision.gameObject.tag == "Player") return;
-        GetComponent<AudioSource>().Play();
+        if (collision.gameObject.tag == "Player") audioSource.PlayOneShot(onPaddleHit);
+        else audioSource.PlayOneShot(onElseHit);
     }
 
     void OnTriggerEnter2D(Collider2D collider)

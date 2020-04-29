@@ -15,6 +15,7 @@ public class HeadEnemy : MonoBehaviour
 
     public int pubOpinBack;
 
+    private AudioSource audioSource;
     public AudioClip ballHit;
     public AudioClip bribeHit;
     public AudioClip ballDeath;
@@ -23,10 +24,14 @@ public class HeadEnemy : MonoBehaviour
     private float timer = 0.0f;
     private Animator animator;
 
+    private ScriptedMovement2D mov;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        mov = GetComponent<ScriptedMovement2D>();
     }
 
     // Update is called once per frame
@@ -48,7 +53,6 @@ public class HeadEnemy : MonoBehaviour
 
         if (collision.gameObject.tag == "Ball")
         {
-            AudioSource audioSource = GetComponent<AudioSource>();
             if (animator != null) animator.SetTrigger("IsLegalHit");
             this.health -= damageTaken;
             audioSource.PlayOneShot(ballHit);
@@ -56,10 +60,9 @@ public class HeadEnemy : MonoBehaviour
             if (this.health <= 0)
             {
                 if(animator != null) animator.SetBool("IsLegalDeath", true);
-                AudioSource.PlayClipAtPoint(ballDeath, transform.parent.position, .2f);
+                audioSource.PlayOneShot(ballDeath);
                 if (animator == null) Destroy(gameObject); // we need to destroy the game object, instead of the death animation
-                // else we destroy this
-                Destroy(this);
+                else Destroy(this);
             }
 
         }
@@ -67,23 +70,21 @@ public class HeadEnemy : MonoBehaviour
         {
             Projectile hitBy = collision.gameObject.GetComponent<Projectile>();
             if (animator != null) animator.SetTrigger("IsBribeHit");
-            AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(bribeHit);
             moneyToBribe -= hitBy.damage;
             if (this.moneyToBribe <= 0)
             {
                 if(animator!=null) animator.SetBool("IsBribeDeath", true);
-                AudioSource.PlayClipAtPoint(bribeDeath, transform.parent.position, .2f);
+                audioSource.PlayOneShot(bribeDeath);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += pubOpinBack;
                 if (animator == null) Destroy(gameObject); // we need to destroy the game object, instead of the death animation
-                Destroy(this);
+                else Destroy(this);
             }
         }
         else
         {
             //Get the first contact point's normal
             Vector2 normal = collision.contacts[0].normal;
-            ScriptedMovement2D mov = GetComponent<ScriptedMovement2D>();
 
             if (normal.x != 0)
             {
