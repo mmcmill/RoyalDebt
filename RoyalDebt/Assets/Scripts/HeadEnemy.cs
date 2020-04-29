@@ -56,7 +56,7 @@ public class HeadEnemy : MonoBehaviour
             if (this.health <= 0)
             {
                 if(animator != null) animator.SetBool("IsLegalDeath", true);
-                AudioSource.PlayClipAtPoint(ballDeath, transform.parent.position, .2f);
+                audioSource.PlayOneShot(ballDeath);
                 if (animator == null) Destroy(gameObject); // we need to destroy the game object, instead of the death animation
                 // else we destroy this
                 Destroy(this);
@@ -73,7 +73,7 @@ public class HeadEnemy : MonoBehaviour
             if (this.moneyToBribe <= 0)
             {
                 if(animator!=null) animator.SetBool("IsBribeDeath", true);
-                AudioSource.PlayClipAtPoint(bribeDeath, transform.parent.position, .2f);
+                audioSource.PlayOneShot(bribeDeath);
                 hitBy.owner.GetComponent<PaddleController>().PublicOpinion += pubOpinBack;
                 if (animator == null) Destroy(gameObject); // we need to destroy the game object, instead of the death animation
                 Destroy(this);
