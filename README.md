@@ -8,5 +8,3 @@ A Breakout/Arkanoid style video game that serves as a metaphor for the South Sea
 You can read more about the South Sea Company Bubble [here](https://en.wikipedia.org/wiki/South_Sea_Company).
 
 ### **[Play the game here](https://mmcmill.github.io/RoyalDebt/index.html).**
-
-NOTE: There are window scaling issues in any resolution less than 1900x1080 or aspect ratios other than 16:9
