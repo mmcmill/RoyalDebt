@@ -1,5 +1,5 @@
 # Royal Debt
-A Breakout style video game that serves as a metaphor for the South Sea Company Bubble. 
+A Breakout/Arkanoid style video game that serves as a metaphor for the South Sea Company Bubble. 
 
   The South Sea Company was a joint-stock company created in effort to offset Britain’s massive national debt in the early 18th century, aiming to generate revenue through the lucrative prospect of exclusively overseeing British trade to South American ports. As it turned out, the SSC was extremely limited in their capability to do this, and as a result, did little more than fabricate interest in the company’s potential and then use this hype to drive stock prices up, making all of those “in the know” a lot of money through insider trading. Eventually, with no revenue to back the company’s perceived growth, it collapsed, driving a large portion of Britain into major financial crisis. 
   
@@ -8,3 +8,5 @@ A Breakout style video game that serves as a metaphor for the South Sea Company 
 You can read more about the South Sea Company Bubble [here](https://en.wikipedia.org/wiki/South_Sea_Company).
 
 ### **[Play the game here](https://mmcmill.github.io/RoyalDebt/index.html).**
+
+NOTE: There are window scaling issues in any resolution less than 1900x1080 or aspect ratios other than 16:9
